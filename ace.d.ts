@@ -231,7 +231,7 @@ export namespace Ace {
     range: Range;
     preserveCase: boolean;
     regExp: RegExp;
-    wholeWord: string;
+    wholeWord: boolean;
     caseSensitive: boolean;
     wrap: boolean;
   }
@@ -365,7 +365,7 @@ export namespace Ace {
     moduleUrl(name: string, component?: string): string;
     setModuleUrl(name: string, subst: string): string;
     loadModule(moduleName: string | [string, string],
-      onLoad: (module: any) => void): void;
+      onLoad?: (module: any) => void): void;
     init(packaged: any): any;
     defineOptions(obj: any, path: string, options: { [key: string]: any }): Config;
     resetOptions(obj: any): void;
@@ -757,7 +757,7 @@ export namespace Ace {
     setStyle(style: string): void;
     unsetStyle(style: string): void;
     getFontSize(): string;
-    setFontSize(size: string): void;
+    setFontSize(size: number): void;
     focus(): void;
     isFocused(): boolean;
     blur(): void;
@@ -858,9 +858,10 @@ export namespace Ace {
     replace(replacement: string, options?: Partial<SearchOptions>): number;
     replaceAll(replacement: string, options?: Partial<SearchOptions>): number;
     getLastSearchOptions(): Partial<SearchOptions>;
-    find(needle: string, options?: Partial<SearchOptions>, animate?: boolean): void;
+    find(needle: string | RegExp, options?: Partial<SearchOptions>, animate?: boolean): Ace.Range | undefined;
     findNext(options?: Partial<SearchOptions>, animate?: boolean): void;
     findPrevious(options?: Partial<SearchOptions>, animate?: boolean): void;
+    findAll(needle: string | RegExp, options?: Partial<SearchOptions>, additive?: boolean): number;
     undo(): void;
     redo(): void;
     destroy(): void;

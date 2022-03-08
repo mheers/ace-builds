@@ -364,7 +364,7 @@ dom.importCssString("\
     line-height: 1.4;\
     background: #25282c;\
     color: #c1c1c1;\
-}", "autocompletion.css");
+}", "autocompletion.css", false);
 
 exports.AcePopup = AcePopup;
 exports.$singleLineEditor = $singleLineEditor;
@@ -430,8 +430,9 @@ exports.getCompletionPrefix = function (editor) {
 
 });
 
-define("ace/snippets",["require","exports","module","ace/lib/oop","ace/lib/event_emitter","ace/lib/lang","ace/range","ace/range_list","ace/keyboard/hash_handler","ace/tokenizer","ace/clipboard","ace/lib/dom","ace/editor"], function(require, exports, module) {
+define("ace/snippets",["require","exports","module","ace/lib/dom","ace/lib/oop","ace/lib/event_emitter","ace/lib/lang","ace/range","ace/range_list","ace/keyboard/hash_handler","ace/tokenizer","ace/clipboard","ace/editor"], function(require, exports, module) {
 "use strict";
+var dom = require("./lib/dom");
 var oop = require("./lib/oop");
 var EventEmitter = require("./lib/event_emitter").EventEmitter;
 var lang = require("./lib/lang");
@@ -1413,14 +1414,14 @@ var moveRelative = function(point, start) {
 };
 
 
-require("./lib/dom").importCssString("\
+dom.importCssString("\
 .ace_snippet-marker {\
     -moz-box-sizing: border-box;\
     box-sizing: border-box;\
     background: rgba(194, 193, 208, 0.09);\
     border: 1px dotted rgba(211, 208, 235, 0.62);\
     position: absolute;\
-}");
+}", "snippets.css", false);
 
 exports.snippetManager = new SnippetManager();
 
@@ -2033,7 +2034,7 @@ margin: 0px;\
 .ace_optionsMenuEntry button:hover{\
 background: #f0f0f0;\
 }";
-dom.importCssString(cssText);
+dom.importCssString(cssText, "settings_menu.css", false);
 
 module.exports.overlayPage = function overlayPage(editor, contentElement, callback) {
     var closer = document.createElement('div');
@@ -2194,6 +2195,7 @@ define("ace/ext/modelist",["require","exports","module"], function (require, exp
     HTML_Ruby: ["erb|rhtml|html.erb"],
     INI: ["ini|conf|cfg|prefs"],
     Io: ["io"],
+    Ion: ["ion"],
     Jack: ["jack"],
     Jade: ["jade|pug"],
     Java: ["java"],
@@ -2235,6 +2237,7 @@ define("ace/ext/modelist",["require","exports","module"], function (require, exp
     Nunjucks: ["nunjucks|nunjs|nj|njk"],
     ObjectiveC: ["m|mm"],
     OCaml: ["ml|mli"],
+    PartiQL: ["partiql|pql"],
     Pascal: ["pas|p"],
     Perl: ["pl|pm"],
     pgSQL: ["pgsql"],
@@ -2259,10 +2262,12 @@ define("ace/ext/modelist",["require","exports","module"], function (require, exp
     RST: ["rst"],
     Ruby: ["rb|ru|gemspec|rake|^Guardfile|^Rakefile|^Gemfile"],
     Rust: ["rs"],
+    SaC: ["sac"],
     SASS: ["sass"],
     SCAD: ["scad"],
     Scala: ["scala|sbt"],
     Scheme: ["scm|sm|rkt|oak|scheme"],
+    Scrypt: ["scrypt"],
     SCSS: ["scss"],
     SH: ["sh|bash|^.bashrc"],
     SJS: ["sjs"],
@@ -2792,7 +2797,7 @@ dom.importCssString(".ace_prompt_container {\
     background: white;\
     border-radius: 2px;\
     box-shadow: 0px 2px 3px 0px #555;\
-}");
+}", "promtp.css", false);
 
 
 exports.prompt = prompt;

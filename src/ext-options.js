@@ -61,7 +61,7 @@ margin: 0px;\
 .ace_optionsMenuEntry button:hover{\
 background: #f0f0f0;\
 }";
-dom.importCssString(cssText);
+dom.importCssString(cssText, "settings_menu.css", false);
 
 module.exports.overlayPage = function overlayPage(editor, contentElement, callback) {
     var closer = document.createElement('div');
@@ -222,6 +222,7 @@ define("ace/ext/modelist",["require","exports","module"], function (require, exp
     HTML_Ruby: ["erb|rhtml|html.erb"],
     INI: ["ini|conf|cfg|prefs"],
     Io: ["io"],
+    Ion: ["ion"],
     Jack: ["jack"],
     Jade: ["jade|pug"],
     Java: ["java"],
@@ -263,6 +264,7 @@ define("ace/ext/modelist",["require","exports","module"], function (require, exp
     Nunjucks: ["nunjucks|nunjs|nj|njk"],
     ObjectiveC: ["m|mm"],
     OCaml: ["ml|mli"],
+    PartiQL: ["partiql|pql"],
     Pascal: ["pas|p"],
     Perl: ["pl|pm"],
     pgSQL: ["pgsql"],
@@ -287,10 +289,12 @@ define("ace/ext/modelist",["require","exports","module"], function (require, exp
     RST: ["rst"],
     Ruby: ["rb|ru|gemspec|rake|^Guardfile|^Rakefile|^Gemfile"],
     Rust: ["rs"],
+    SaC: ["sac"],
     SASS: ["sass"],
     SCAD: ["scad"],
     Scala: ["scala|sbt"],
     Scheme: ["scm|sm|rkt|oak|scheme"],
+    Scrypt: ["scrypt"],
     SCSS: ["scss"],
     SH: ["sh|bash|^.bashrc"],
     SJS: ["sjs"],
